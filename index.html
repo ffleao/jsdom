@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <title>JS DOM</title>
+    <style>
+        button {
+            padding: 5px 10px;
+            margin-top: 10px;
+        }
+        
+        body {
+            background-color: whitesmoke;
+            color: black;
+            transition: background-color;
+        }
+
+        .dark-mode {
+            background-color: black;
+            color: white;
+        }
+
+        .blue-txt {
+            color: blue;
+        }
+
+        #texto {
+            font-size: 16px;
+            transition: text-shadow 0.3s ease;
+        }
+        .shadow {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+<h1>Exercício: Múltiplas Alterações na Página</h1>
+
+<h3>Descrição: Crie uma página HTML com 10 botões. Cada botão realizará uma ação diferente:</h3>
+
+<p>Alternar a cor de fundo entre preto e branco.
+    <button id="corfundo">CorFundo</button>
+    <script>
+        let corfundo = document.getElementById('corfundo');
+        corfundo.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        }
+    );
+    </script>
+</p>
+
+<p id="txt">Alterar a cor do texto para azul.
+    <button id="cortxt">AlterarCorTexto</button>
+    <script>
+        let cortxt = document.getElementById('cortxt');
+        let txt = document.getElementById('txt');
+
+        cortxt.addEventListener('click', function() {
+            txt.classList.toggle('blue-txt');
+        }
+    );
+    </script>
+</p>
+
+<p id="text">Aumentar e diminuir o tamanho da fonte do texto.
+    <button id="aumentafont">AumentarFonte
+        <script>
+            let aumentafont = document.getElementById('aumentafont');
+            let fontmais = document.getElementById('text');
+            
+            aumentafont.addEventListener('click', function() {
+                let atualfontsize = window.getComputedStyle(fontmais).fontSize;
+                let newfontsize = parseFloat(atualfontsize) + 2;
+                fontmais.style.fontSize = newfontsize + 'px';
+            }
+        );
+        </script>
+    </button>
+    <button id="diminuifont">DiminuirFonte
+        <script>
+            let diminuifont = document.getElementById('diminuifont');
+            let fontmenos = document.getElementById('text');
+            
+            diminuifont.addEventListener('click', function() {
+                let atualfontsize = window.getComputedStyle(fontmenos).fontSize;
+                let newfontsize = parseFloat(atualfontsize) - 2;
+                if (newfontsize >= 10) {
+                    fontmenos.style.fontSize = newfontsize + 'px';
+                }
+            }
+        );
+        </script>
+    </button>
+</p>
+
+<p id="titulo">Alterar o texto do título.
+    <button id="alt_txt">AlterarTexto
+        <script>
+            let button = document.getElementById('alt_txt');
+            let title = document.getElementById('titulo');
+    
+            button.addEventListener('click', function() {
+                titulo.textContent = "Novo texto gerado!";
+            }
+        );
+        </script>
+    </button>
+</p>
+
+<p id='texto'>Adicionar e remover uma sombra ao texto.
+    <button id="addsomb">AdicionarSombra</button>
+    <script>
+        const addsomb = document.getElementById('addsomb');
+        const text = document.getElementById('texto');
+        
+        addsomb.addEventListener('click', function() {
+            text.classList.toggle('shadow');
+        });
+    </script>
+    <button id="removsomb">RemoverSombra</button>
+
+<p>Alterar a cor de fundo dos parágrafos.
+    <button id="altcor">AlterarCorParagrafo</button>
+    <script>
+    </script>
+</p>
+
+<p>Adicionar uma imagem à página.
+    <button id="addimg">AdicionarImagem</button>
+    <script>
+    </script>
+</p>
+
+<p>Remover a imagem da página.
+    <button id="removimg">RemoveImagem</button>
+    <script>
+    </script>
+</p>
+</body>
+</html>
